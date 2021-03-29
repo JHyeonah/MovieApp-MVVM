@@ -3,4 +3,12 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="lightGray">#1B1251</color>
+    <color name="deepGray">#0A0432</color>
+
+    <color name="yellowStar">#FFDC2F</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="whiteOpacity70">#B3FFFFFF</color>
+
 </resources>
