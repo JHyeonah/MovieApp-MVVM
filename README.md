@@ -1,3 +1,3 @@
 # MovieApp-MVVM
-Movie Api를 이용해 MVVM 방식으로 구현한 Toy App
-<br>https://yts.mx/api
+Movie Api를 이용해 MVVM 방식으로 구현한 Toy App  
+<br><br>https://yts.mx/api
