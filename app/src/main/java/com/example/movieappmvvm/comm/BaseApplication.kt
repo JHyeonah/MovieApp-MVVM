@@ -1,7 +1,7 @@
-package com.example.movieapp_mvvm.comm
+package com.example.movieappmvvm.comm
 
 import android.app.Application
-import com.example.movieapp_mvvm.service.RetrofitService
+import com.example.movieappmvvm.service.RetrofitService
 import com.google.gson.GsonBuilder
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -9,7 +9,6 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.math.sin
 
 
 class BaseApplication : Application() {

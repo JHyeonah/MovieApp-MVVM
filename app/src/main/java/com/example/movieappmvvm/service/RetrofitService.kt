@@ -1,6 +1,6 @@
-package com.example.movieapp_mvvm.service
+package com.example.movieappmvvm.service
 
-import com.example.movieapp_mvvm.model.ListMovies
+import com.example.movieappmvvm.model.ListMovies
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 

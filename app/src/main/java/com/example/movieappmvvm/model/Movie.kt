@@ -1,4 +1,4 @@
-package com.example.movieapp_mvvm.model
+package com.example.movieappmvvm.model
 
 data class Movie (
     val title: String?,
