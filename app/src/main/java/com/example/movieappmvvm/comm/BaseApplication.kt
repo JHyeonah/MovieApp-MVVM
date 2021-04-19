@@ -10,11 +10,10 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-
 class BaseApplication : Application() {
     private val baseUrl = "https://yts.mx/api/v2/"
 
-    val retrofitModule = module {
+    private val retrofitModule = module {
         single {
             GsonBuilder().setLenient().create()
         }
@@ -32,7 +31,7 @@ class BaseApplication : Application() {
         }
     }
 
-    val myDiModules = listOf(
+    private val myDiModules = listOf(
         retrofitModule
     )
 
