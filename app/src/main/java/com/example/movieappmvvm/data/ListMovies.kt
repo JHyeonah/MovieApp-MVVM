@@ -1,4 +1,4 @@
-package com.example.movieappmvvm.model
+package com.example.movieappmvvm.data
 
 data class ListMovies(
     val data: Data

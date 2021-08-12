@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieappmvvm.R
-import com.example.movieappmvvm.model.Movie
+import com.example.movieappmvvm.data.Movie
 
 class MovieListAdapter(context: Context, list: ArrayList<Movie>) : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
