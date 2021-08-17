@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/deepGray</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/deepGray</item>
     </style>
 
 </resources>
