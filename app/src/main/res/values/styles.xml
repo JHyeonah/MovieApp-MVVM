@@ -8,4 +8,7 @@
         <item name="android:colorBackground">@color/deepGray</item>
     </style>
 
+    <style name="Theme.Tab" parent="Widget.MaterialComponents.TabLayout">
+        <item name="android:textColorPrimary">@color/colorAccent</item>
+    </style>
 </resources>
