@@ -6,5 +6,5 @@ import javax.inject.Inject
 
 class MovieRepository @Inject constructor(private val service: MovieService) {
 
-    fun getMovieList() = service.getMovieList()
+    suspend fun getMovieList() = service.getMovieList()
 }
