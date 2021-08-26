@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import com.example.movieappmvvm.databinding.FragmentMovieListBinding
 import com.example.movieappmvvm.view.list.MovieListViewModel
 import com.example.movieappmvvm.view.main.ViewPagerAdapter
@@ -27,9 +28,9 @@ class MovieListFragment : Fragment() {
     }
 
     private fun subscribeUI(adapter: ViewPagerAdapter, binding: FragmentMovieListBinding) {
-        viewModel.movieList.observe (this, {
-            adapter.submitList()
-        })
+        viewModel.movieList.observe (this) {
+
+        }
     }
 
 }
