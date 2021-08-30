@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="viewModel"
-            type="com.example.movieappmvvm.view.list.MovieListViewModel" />
+            name="movie"
+            type="com.example.movieappmvvm.data.Movie" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -57,7 +57,7 @@
                     android:layout_marginTop="10pt"
                     android:layout_marginEnd="5pt"
                     tools:text="Movie"
-                    android:text="@{}"
+                    android:text="@{movie.title}"
                     android:textSize="8pt"
                     android:textColor="#ffffff"
                     android:textStyle="bold"

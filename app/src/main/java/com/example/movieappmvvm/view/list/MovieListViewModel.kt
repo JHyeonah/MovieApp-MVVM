@@ -13,7 +13,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieListViewModel @Inject constructor(private val movieRepository: MovieRepository) : ViewModel() {
     val movieList = MutableLiveData<List<Movie>>()
-    private var job: Job? = null
+//    private var job: Job? = null
 
     init {
         getMovieList()
@@ -45,6 +45,5 @@ class MovieListViewModel @Inject constructor(private val movieRepository: MovieR
 
     override fun onCleared() {
         super.onCleared()
-        job?.cancel()
     }
 }
