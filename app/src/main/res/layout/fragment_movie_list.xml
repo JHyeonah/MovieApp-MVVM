@@ -14,7 +14,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:listitem="@layout/item_movie"
-            android:id="@+id/movieRecycler"/>
+            android:id="@+id/movieRecycler"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

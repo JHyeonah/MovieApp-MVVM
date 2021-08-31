@@ -24,12 +24,16 @@ class MovieListFragment : Fragment() {
     ): View? {
         binding = FragmentMovieListBinding.inflate(inflater, container, false)
 
-        return super.onCreateView(inflater, container, savedInstanceState)
+        val adapter = MovieListAdapter()
+        binding.movieRecycler.adapter = adapter
+
+        subscribeUI(adapter, binding)
+        return binding.root
     }
 
-    private fun subscribeUI(adapter: ViewPagerAdapter, binding: FragmentMovieListBinding) {
-        viewModel.movieList.observe (this) {
-
+    private fun subscribeUI(adapter: MovieListAdapter, binding: FragmentMovieListBinding) {
+        viewModel.movieList.observe (viewLifecycleOwner) {
+            adapter.submitList(it)
         }
     }
 
