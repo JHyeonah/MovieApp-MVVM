@@ -6,7 +6,7 @@ data class Movie (
     val id: Int,
     val title: String?,
     val summary: String?,
-    val year: String?,
+    val year: Int?,
     val rating: Float?,
     val runtime: Float?,
     val genres: ArrayList<String>?,

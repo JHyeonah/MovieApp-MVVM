@@ -69,7 +69,8 @@
                     app:layout_constraintStart_toStartOf="@id/tvTitle"
                     app:layout_constraintEnd_toEndOf="@id/tvTitle"
                     android:layout_marginTop="4pt"
-                    android:text="Drama / Action"
+                    tools:text="Drama / Action"
+                    app:genreText="@{movie.genres}"
                     android:textStyle="bold"
                     android:textColor="@color/whiteOpacity70"
                     android:textSize="6pt"
@@ -81,19 +82,21 @@
                     app:layout_constraintStart_toStartOf="@id/tvTitle"
                     app:layout_constraintEnd_toEndOf="@id/tvTitle"
                     android:layout_marginTop="1pt"
-                    android:text="by Director"
+                    tools:text="by Director"
+                    app:textFromInt="@{movie.year}"
                     android:textColor="@color/whiteOpacity70"
                     android:textSize="5pt"
-                    android:id="@+id/tvDirector"/>
+                    android:id="@+id/tvYear"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="@id/tvDirector"
-                    app:layout_constraintTop_toBottomOf="@id/tvDirector"
+                    app:layout_constraintStart_toStartOf="@id/tvYear"
+                    app:layout_constraintTop_toBottomOf="@id/tvYear"
                     android:textSize="9pt"
                     android:textColor="@color/yellowStar"
                     android:layout_marginTop="4pt"
-                    android:text="9.9"
+                    tools:text="9.9"
+                    app:ratingText="@{movie.rating}"
                     android:textStyle="bold"
                     android:id="@+id/tvStar"/>
                 <RatingBar
@@ -110,7 +113,7 @@
                     android:scaleY="1.3"
                     android:scaleX="1.3"
                     android:numStars="5"
-                    android:rating="5"
+                    app:ratingStars="@{movie.rating}"
                     android:progressTint="@color/yellowStar"
                     android:id="@+id/ratingBar"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -123,7 +126,7 @@
                 app:layout_constraintEnd_toEndOf="@id/guideLine"
                 android:layout_marginStart="8pt"
                 android:layout_marginBottom="8pt"
-                android:src="@drawable/img_movie"
+                app:imageFromUrl="@{movie.mediumImage}"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 app:layout_constraintHorizontal_bias="0"
