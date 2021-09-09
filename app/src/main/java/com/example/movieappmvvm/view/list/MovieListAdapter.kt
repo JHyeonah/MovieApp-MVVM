@@ -1,12 +1,15 @@
 package com.example.movieappmvvm.view.list
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieappmvvm.data.Movie
 import com.example.movieappmvvm.databinding.ItemMovieBinding
+import com.example.movieappmvvm.view.main.MainViewPagerFragmentDirections
 
 class MovieListAdapter : ListAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffCallback()) {
 
@@ -20,12 +23,22 @@ class MovieListAdapter : ListAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffCa
     }
 
     class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.itemLayout.setOnClickListener {
+                navigateToDetail(it)
+            }
+        }
 
         fun bind(item: Movie) {
             binding.apply {
                 movie = item
                 executePendingBindings()
             }
+        }
+
+        private fun navigateToDetail(view: View) {
+            val direction = MainViewPagerFragmentDirections.actionMainToMovieDetail()
+            view.findNavController().navigate(direction)
         }
     }
 }
