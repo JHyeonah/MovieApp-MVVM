@@ -9,6 +9,16 @@
         android:id="@+id/main_view_pager_fragment"
         android:name="com.example.movieappmvvm.view.main.MainViewPagerFragment"
         tools:layout="@layout/fragment_main_view_pager">
+        <action
+            android:id="@+id/action_main_to_movie_detail"
+            app:destination="@id/movie_detail_fragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/movie_detail_fragment"
+        android:name="com.example.movieappmvvm.view.detail.MovieDetailFragment"
+        android:label="Detail"
+        tools:layout="@layout/fragment_movie_detail">
 
     </fragment>
 </navigation>
