@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="movie"
+            type="com.example.movieappmvvm.data.Movie" />
+    </data>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -31,7 +37,8 @@
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/image_view_pager"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimary"/>
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
@@ -51,7 +58,95 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="16dp">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/movie_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@drawable/item_back">
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        tools:text="Title"
+                        android:textColor="@color/white"
+                        android:textSize="12pt"
+                        android:textStyle="bold"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"/>
+                    <TextView
+                        android:id="@+id/tv_genre"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/tv_title"
+                        app:layout_constraintStart_toStartOf="@id/tv_title"
+                        app:layout_constraintEnd_toEndOf="@id/tv_title"
+                        android:layout_marginTop="4pt"
+                        android:text="Drama / Action"
+                        app:genreText="@{movie.genres}"
+                        android:textStyle="bold"
+                        android:textColor="@color/whiteOpacity70"
+                        android:textSize="6pt"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/tv_genre"
+                        app:layout_constraintStart_toStartOf="@id/tv_title"
+                        app:layout_constraintEnd_toEndOf="@id/tv_title"
+                        android:layout_marginTop="1pt"
+                        tools:text="2020"
+                        android:textColor="@color/whiteOpacity70"
+                        android:textSize="5pt"
+                        android:id="@+id/tv_year"/>
+                    <TextView
+                        android:id="@+id/tv_star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/tv_year"
+                        app:layout_constraintTop_toBottomOf="@id/tv_year"
+                        android:textSize="9pt"
+                        android:textColor="@color/yellowStar"
+                        android:layout_marginTop="4pt"
+                        tools:text="9.9"
+                        app:ratingText="@{movie.rating}"
+                        android:textStyle="bold" />
+                    <RatingBar
+                        android:id="@+id/rating_bar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toEndOf="@id/tv_star"
+                        app:layout_constraintTop_toTopOf="@id/tv_star"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_star"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        style="@style/Widget.AppCompat.RatingBar.Small"
+                        app:layout_constraintHorizontal_bias="0"
+                        android:layout_marginStart="10pt"
+                        android:layout_marginEnd="5pt"
+                        android:scaleY="1.5"
+                        android:scaleX="1.5"
+                        android:numStars="5"
+                        app:ratingStars="@{movie.rating}"
+                        android:progressTint="@color/yellowStar" />
 
+                    <TextView
+                        android:id="@+id/tv_detail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/rating_bar"
+                        app:layout_constraintStart_toStartOf="@id/tv_title"
+                        app:layout_constraintEnd_toEndOf="@id/tv_title"
+                        android:layout_marginTop="10pt"
+                        android:textSize="6pt"
+                        tools:text="detail"
+                        android:textColor="@color/whiteOpacity50"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintVertical_bias="0"
+                        android:layout_marginBottom="16dp"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
