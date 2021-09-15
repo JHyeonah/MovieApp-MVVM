@@ -40,6 +40,7 @@
                 android:paddingBottom="8pt"
                 android:background="@drawable/item_back"
                 android:layout_marginTop="15pt"
+                android:elevation="3dp"
                 android:id="@+id/movieLayout">
                 <androidx.constraintlayout.widget.Guideline
                     android:layout_width="1dp"
@@ -130,6 +131,7 @@
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 app:layout_constraintHorizontal_bias="0"
+                android:elevation="4dp"
                 android:id="@+id/imgView"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
