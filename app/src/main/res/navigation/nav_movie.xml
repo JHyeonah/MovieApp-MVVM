@@ -19,6 +19,8 @@
         android:name="com.example.movieappmvvm.view.detail.MovieDetailFragment"
         android:label="Detail"
         tools:layout="@layout/fragment_movie_detail">
-
+        <argument
+            android:name="id"
+            app:argType="integer"/>
     </fragment>
 </navigation>

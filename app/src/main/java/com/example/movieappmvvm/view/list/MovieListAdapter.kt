@@ -25,7 +25,9 @@ class MovieListAdapter : ListAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffCa
     class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.itemLayout.setOnClickListener {
-                navigateToDetail(it)
+                binding.movie?.let { movie ->
+                    navigateToDetail(movie, it)
+                }
             }
         }
 
@@ -36,8 +38,8 @@ class MovieListAdapter : ListAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffCa
             }
         }
 
-        private fun navigateToDetail(view: View) {
-            val direction = MainViewPagerFragmentDirections.actionMainToMovieDetail()
+        private fun navigateToDetail(movie: Movie, view: View) {
+            val direction = MainViewPagerFragmentDirections.actionMainToMovieDetail(movie.id)
             view.findNavController().navigate(direction)
         }
     }
