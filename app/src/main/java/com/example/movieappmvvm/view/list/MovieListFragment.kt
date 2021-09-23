@@ -27,11 +27,11 @@ class MovieListFragment : Fragment() {
         val adapter = MovieListAdapter()
         binding.movieRecycler.adapter = adapter
 
-        subscribeUI(adapter, binding)
+        subscribeUI(adapter)
         return binding.root
     }
 
-    private fun subscribeUI(adapter: MovieListAdapter, binding: FragmentMovieListBinding) {
+    private fun subscribeUI(adapter: MovieListAdapter) {
         viewModel.movieList.observe (viewLifecycleOwner) {
             adapter.submitList(it)
         }
