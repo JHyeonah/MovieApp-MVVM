@@ -9,6 +9,7 @@
     </style>
 
     <style name="Theme.Tab" parent="Widget.MaterialComponents.TabLayout">
-        <item name="android:textColorPrimary">@color/colorAccent</item>
+        <item name="android:textColor">@color/whiteOpacity70</item>
     </style>
+
 </resources>
