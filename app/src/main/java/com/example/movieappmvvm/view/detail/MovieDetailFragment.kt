@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import com.example.movieappmvvm.databinding.FragmentMovieDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,7 +48,14 @@ class MovieDetailFragment : Fragment() {
             }
         }
 
+        subscribeUi()
 
         return binding.root
+    }
+
+    private fun subscribeUi() {
+        detailViewModel.movie.observe(viewLifecycleOwner) {
+            binding.movie = it
+        }
     }
 }

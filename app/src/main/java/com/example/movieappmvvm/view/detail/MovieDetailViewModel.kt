@@ -23,8 +23,8 @@ class MovieDetailViewModel @Inject constructor(
     val movie = MutableLiveData<Movie>()
 
     init {
-        getMovieDetail()
         Debug.log("movieId : $movieId")
+        getMovieDetail()
     }
 
     private fun getMovieDetail() {
@@ -33,7 +33,7 @@ class MovieDetailViewModel @Inject constructor(
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     Debug.log("get movie detail : ${response.body()}")
-                    movie.postValue(response.body())
+                    movie.postValue(response.body()?.data?.movie)
                 } else {
                     Debug.log("get movie error detail: ${response.message()}")
                 }

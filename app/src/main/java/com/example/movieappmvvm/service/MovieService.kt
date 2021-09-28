@@ -2,6 +2,7 @@ package com.example.movieappmvvm.service
 
 import com.example.movieappmvvm.data.ListMovies
 import com.example.movieappmvvm.data.Movie
+import com.example.movieappmvvm.data.MovieDetail
 import io.reactivex.rxjava3.core.Single
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -21,7 +22,7 @@ interface MovieService {
         @Query("movie_id") id: Int,
         @Query("with_images") withImages: Boolean,
         @Query("with_cast") withCast: Boolean
-    ): Response<Movie>
+    ): Response<MovieDetail>
 
     companion object {
         private const val BASE_URL = "https://yts.mx/api/v2/"

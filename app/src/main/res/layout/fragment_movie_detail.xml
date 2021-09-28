@@ -76,8 +76,9 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         tools:text="Title"
+                        android:text="@{movie.titleLong}"
                         android:textColor="@color/white"
-                        android:textSize="12pt"
+                        android:textSize="11pt"
                         android:textStyle="bold"
                         android:layout_marginTop="16dp"
                         android:layout_marginStart="16dp"
@@ -90,7 +91,6 @@
                         app:layout_constraintStart_toStartOf="@id/tv_title"
                         app:layout_constraintEnd_toEndOf="@id/tv_title"
                         android:layout_marginTop="4pt"
-                        android:text="Drama / Action"
                         android:textStyle="bold"
                         android:textColor="@color/whiteOpacity70"
                         android:textSize="6pt"/>

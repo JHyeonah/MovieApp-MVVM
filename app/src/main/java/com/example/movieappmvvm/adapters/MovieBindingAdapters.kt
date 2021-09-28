@@ -47,3 +47,8 @@ fun bindTextFromInt(view: TextView, i: Int) {
     view.text = i.toString()
 }
 
+@BindingAdapter("runtime")
+fun bindRuntime(view: TextView, i: Int) {
+    view.text = i.toString() + " Min"
+}
+
