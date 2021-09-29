@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import com.example.movieappmvvm.databinding.FragmentMovieDetailBinding
+import com.example.movieappmvvm.util.Debug
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -48,14 +49,23 @@ class MovieDetailFragment : Fragment() {
             }
         }
 
-        subscribeUi()
+        val adapter = CastAdapter()
+        binding.actorRecycler.adapter = adapter
+
+        subscribeUi(adapter)
 
         return binding.root
     }
 
-    private fun subscribeUi() {
+    private fun subscribeUi(adapter: CastAdapter) {
         detailViewModel.movie.observe(viewLifecycleOwner) {
             binding.movie = it
+
+            if (!it.cast.isNullOrEmpty()) {
+                adapter.submitList(it.cast)
+            } else {
+                binding.actorLayout.visibility = View.GONE
+            }
         }
     }
 }

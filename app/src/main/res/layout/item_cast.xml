@@ -28,6 +28,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="5dp"
             tools:text="Name"
+            android:text="@{cast.name}"
             android:textColor="@color/whiteOpacity70"
             android:gravity="center"
             android:textSize="6pt"

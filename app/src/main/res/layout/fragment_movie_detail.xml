@@ -93,7 +93,8 @@
                         android:layout_marginTop="4pt"
                         android:textStyle="bold"
                         android:textColor="@color/whiteOpacity70"
-                        android:textSize="6pt"/>
+                        android:textSize="6pt"
+                        app:genreText="@{movie.genres}"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -104,6 +105,7 @@
                         tools:text="2020"
                         android:textColor="@color/whiteOpacity70"
                         android:textSize="5pt"
+                        app:runtime="@{movie.runtime}"
                         android:id="@+id/tv_year"/>
                     <TextView
                         android:id="@+id/tv_star"
@@ -115,7 +117,8 @@
                         android:textColor="@color/yellowStar"
                         android:layout_marginTop="4pt"
                         tools:text="9.9"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        app:ratingText="@{movie.rating}"/>
                     <RatingBar
                         android:id="@+id/rating_bar"
                         android:layout_width="wrap_content"
@@ -126,12 +129,13 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         style="@style/Widget.AppCompat.RatingBar.Small"
                         app:layout_constraintHorizontal_bias="0"
-                        android:layout_marginStart="10pt"
+                        android:layout_marginStart="14pt"
                         android:layout_marginEnd="5pt"
                         android:scaleY="1.5"
                         android:scaleX="1.5"
                         android:numStars="5"
-                        android:progressTint="@color/yellowStar" />
+                        android:progressTint="@color/yellowStar"
+                        app:ratingStars="@{movie.rating}"/>
 
                     <TextView
                         android:id="@+id/tv_detail"
@@ -143,6 +147,7 @@
                         android:layout_marginTop="10pt"
                         android:textSize="6pt"
                         tools:text="detail"
+                        android:text="@{movie.description}"
                         android:textColor="@color/whiteOpacity50"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintVertical_bias="0"
@@ -161,9 +166,9 @@
                         android:id="@+id/tv_actor"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        tools:text="Title"
+                        android:text="Actor"
                         android:textColor="@color/white"
-                        android:textSize="10pt"
+                        android:textSize="9pt"
                         android:textStyle="bold"
                         android:layout_marginTop="16dp"
                         android:layout_marginStart="16dp"
@@ -172,7 +177,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"/>
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycler_actor"
+                        android:id="@+id/actor_recycler"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toBottomOf="@id/tv_actor"

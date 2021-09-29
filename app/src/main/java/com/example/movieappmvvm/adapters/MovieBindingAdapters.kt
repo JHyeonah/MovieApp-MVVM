@@ -14,7 +14,7 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
 }
 
 @BindingAdapter("genreText")
-fun bindGenreText(view: TextView, list: ArrayList<String>) {
+fun bindGenreText(view: TextView, list: ArrayList<String>?) {
     if (!list.isNullOrEmpty()) {
         var genre = ""
         for (i in list.iterator()) {
@@ -31,7 +31,7 @@ fun bindGenreText(view: TextView, list: ArrayList<String>) {
 @BindingAdapter("ratingText")
 fun bindRatingText(view: TextView, rating: Float?) {
     if (rating != null) {
-        view.text = String.format("%.1f", rating/2)
+        view.text = String.format("%.1f", rating)
     }
 }
 
