@@ -1,5 +1,8 @@
 package com.example.movieappmvvm.view.detail
 
+import android.graphics.drawable.ShapeDrawable
+import android.graphics.drawable.shapes.OvalShape
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +29,11 @@ class CastAdapter : ListAdapter<Cast, RecyclerView.ViewHolder>(CastDiffCallback(
             binding.apply {
                 cast = item
                 executePendingBindings()
+            }
+
+            binding.imgCast.background = ShapeDrawable(OvalShape())
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                binding.imgCast.clipToOutline = true
             }
         }
     }

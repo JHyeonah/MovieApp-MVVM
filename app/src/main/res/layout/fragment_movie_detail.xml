@@ -135,6 +135,7 @@
                         android:scaleX="1.5"
                         android:numStars="5"
                         android:progressTint="@color/yellowStar"
+                        android:backgroundTint="@color/deepGray"
                         app:ratingStars="@{movie.rating}"/>
 
                     <TextView
