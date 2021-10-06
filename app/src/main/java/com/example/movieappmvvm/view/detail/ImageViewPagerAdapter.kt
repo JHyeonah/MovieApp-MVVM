@@ -11,7 +11,7 @@ import com.example.movieappmvvm.R
 
 class ImageViewPagerAdapter(
     val context: Context,
-    private val imageList: Array<String>
+    private val imageList: ArrayList<String>
 ) : RecyclerView.Adapter<ImageViewPagerAdapter.ImageViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {

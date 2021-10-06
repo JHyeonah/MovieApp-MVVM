@@ -66,6 +66,27 @@ class MovieDetailFragment : Fragment() {
             } else {
                 binding.actorLayout.visibility = View.GONE
             }
+
+            val imgList = makeList(it.screenshotImage1, it.screenshotImage2, it.screenshotImage3)
+            binding.imageViewPager.adapter = ImageViewPagerAdapter(requireContext(), imgList)
         }
+    }
+
+    private fun makeList(img1: String?, img2: String?, img3: String?): ArrayList<String> {
+        val list = arrayListOf<String>()
+
+        if (img1 != null) {
+            list.add(img1)
+        }
+
+        if (img2 != null) {
+            list.add(img2)
+        }
+
+        if (img3 != null) {
+            list.add(img3)
+        }
+
+        return list
     }
 }
