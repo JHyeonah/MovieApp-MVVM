@@ -69,6 +69,7 @@ class MovieDetailFragment : Fragment() {
 
             val imgList = makeList(it.screenshotImage1, it.screenshotImage2, it.screenshotImage3)
             binding.imageViewPager.adapter = ImageViewPagerAdapter(requireContext(), imgList)
+            binding.imageIndicator.setViewPager(binding.imageViewPager)
         }
     }
 
