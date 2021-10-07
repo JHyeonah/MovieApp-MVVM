@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.movieappmvvm.R
 
 class ImageViewPagerAdapter(
-    val context: Context,
+    private val context: Context,
     private val imageList: ArrayList<String>
 ) : RecyclerView.Adapter<ImageViewPagerAdapter.ImageViewHolder>() {
 
