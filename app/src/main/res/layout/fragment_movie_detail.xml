@@ -35,6 +35,8 @@
                 tools:text="title"
                 app:titleEnabled="false"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:contentScrim="@color/deepGray"
+                app:title="@{movie.title}"
                 app:toolbarId="@id/toolbar">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,8 +45,7 @@
                     <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/image_view_pager"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorPrimary"/>
+                    android:layout_height="wrap_content"/>
                     <me.relex.circleindicator.CircleIndicator3
                         android:id="@+id/image_indicator"
                         android:layout_width="wrap_content"
@@ -57,9 +58,12 @@
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
+                    android:layout_height="48dp"
                     app:contentInsetStartWithNavigation="0dp"
-                    app:navigationIcon="@drawable/ic_arrow_back"/>
+                    app:navigationIcon="@drawable/ic_arrow_back"
+                    app:layout_collapseMode="pin"
+                    app:titleTextColor="@color/white"
+                    android:background="@android:color/transparent"/>
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
