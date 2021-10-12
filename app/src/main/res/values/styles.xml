@@ -6,6 +6,8 @@
         <item name="colorPrimaryDark">@color/deepGray</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:colorBackground">@color/deepGray</item>
+        <item name="android:textColorHint">@color/whiteOpacity10</item>
+        <item name="android:editTextColor">@color/whiteOpacity50</item>
     </style>
 
     <style name="Theme.Tab" parent="Widget.MaterialComponents.TabLayout">

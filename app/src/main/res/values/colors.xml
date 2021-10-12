@@ -11,5 +11,6 @@
     <color name="white">#FFFFFF</color>
     <color name="whiteOpacity70">#B3FFFFFF</color>
     <color name="whiteOpacity50">#80FFFFFF</color>
+    <color name="whiteOpacity10">#1AFFFFFF</color>
 
 </resources>
