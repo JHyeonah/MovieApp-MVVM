@@ -17,6 +17,9 @@ interface MovieService {
     @GET("list_movies.json")
     suspend fun getMovieList(): Response<ListMovies>
 
+    @GET("list_movies.json")
+    suspend fun searchMovieList(@Query("query_term") query: String): Response<ListMovies>
+
     @GET("movie_details.json")
     suspend fun getMovieDetail(
         @Query("movie_id") id: Int,
