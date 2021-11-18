@@ -13,7 +13,6 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieListViewModel @Inject constructor(private val movieRepository: MovieRepository) : ViewModel() {
     val movieList = MutableLiveData<List<Movie>>()
-//    private var job: Job? = null
 
     init {
         getMovieList()
@@ -43,14 +42,17 @@ class MovieListViewModel @Inject constructor(private val movieRepository: MovieR
 //        }
     }
 
-    private fun searchMovies(query: String) {
-        viewModelScope.launch {
-            val response = movieRepository.searchMovieList(query)
-            withContext(Dispatchers.Main) {
-                if (response.isSuccessful) {
-                    Debug.log("search movie : ${response.body()}")
-                } else {
-                    Debug.log("search movie error : ${response.message()}")
+    fun searchMovies(query: String?) {
+        query?.let {
+            viewModelScope.launch {
+                val response = movieRepository.searchMovieList(query)
+                withContext(Dispatchers.Main) {
+                    if (response.isSuccessful) {
+                        Debug.log("search movie : ${response.body()}")
+                        movieList.postValue(response.body()?.data?.movies)
+                    } else {
+                        Debug.log("search movie error : ${response.message()}")
+                    }
                 }
             }
         }

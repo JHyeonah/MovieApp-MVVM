@@ -8,12 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import com.example.movieappmvvm.databinding.FragmentMovieListBinding
+import com.example.movieappmvvm.util.Debug
 import com.example.movieappmvvm.view.list.MovieListViewModel
 import com.example.movieappmvvm.view.main.ViewPagerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MovieListFragment(query: String?) : Fragment() {
+class MovieListFragment : Fragment() {
     private lateinit var binding: FragmentMovieListBinding
     private val viewModel: MovieListViewModel by viewModels()
 
@@ -34,6 +35,7 @@ class MovieListFragment(query: String?) : Fragment() {
     private fun subscribeUI(adapter: MovieListAdapter) {
         viewModel.movieList.observe (viewLifecycleOwner) {
             adapter.submitList(it)
+            adapter.notifyDataSetChanged()
         }
     }
 

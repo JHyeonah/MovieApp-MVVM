@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.movieappmvvm.R
 import com.example.movieappmvvm.databinding.FragmentMainViewPagerBinding
+import com.example.movieappmvvm.view.list.MovieListViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import java.lang.IndexOutOfBoundsException
@@ -15,6 +17,9 @@ import java.text.FieldPosition
 
 @AndroidEntryPoint
 class MainViewPagerFragment : Fragment() {
+
+    private val viewModel: MovieListViewModel by viewModels()
+    private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,7 +31,7 @@ class MainViewPagerFragment : Fragment() {
         val viewPager = binding.viewPager
         val searchbar = binding.searchBar
 
-        viewPager.adapter = ViewPagerAdapter(this, null)
+        viewPager.adapter = ViewPagerAdapter(this)
 
         TabLayoutMediator(tab, viewPager) { tabLayout, position ->
             tabLayout.setIcon(getTabIcon(position))
@@ -49,6 +54,7 @@ class MainViewPagerFragment : Fragment() {
                 } else {
                     tab.visibility = View.VISIBLE
                 }
+                viewModel.searchMovies(newText)
                 return true
             }
         })
