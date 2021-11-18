@@ -17,16 +17,4 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(private val movieRepository: MovieRepository) : ViewModel() {
 
-    private fun searchMovies(query: String) {
-        viewModelScope.launch {
-            val response = movieRepository.searchMovieList(query)
-            withContext(Dispatchers.Main) {
-                if (response.isSuccessful) {
-                    Debug.log("search movie : ${response.body()}")
-                } else {
-                    Debug.log("search movie error : ${response.message()}")
-                }
-            }
-        }
-    }
 }

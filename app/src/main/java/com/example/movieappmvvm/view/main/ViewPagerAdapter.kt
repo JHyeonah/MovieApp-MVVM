@@ -5,10 +5,10 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.movieappmvvm.view.like.LikeFragment
 import com.example.movieappmvvm.view.list.MovieListFragment
 
-class ViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+class ViewPagerAdapter(fragment: Fragment, query: String?) : FragmentStateAdapter(fragment) {
 
     private val tabFragmentCreators: Map<Int, () -> Fragment> = mapOf(
-        0 to { MovieListFragment() },
+        0 to { MovieListFragment(query) },
         1 to { LikeFragment() }
     )
 

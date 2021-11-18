@@ -43,6 +43,19 @@ class MovieListViewModel @Inject constructor(private val movieRepository: MovieR
 //        }
     }
 
+    private fun searchMovies(query: String) {
+        viewModelScope.launch {
+            val response = movieRepository.searchMovieList(query)
+            withContext(Dispatchers.Main) {
+                if (response.isSuccessful) {
+                    Debug.log("search movie : ${response.body()}")
+                } else {
+                    Debug.log("search movie error : ${response.message()}")
+                }
+            }
+        }
+    }
+
     override fun onCleared() {
         super.onCleared()
     }

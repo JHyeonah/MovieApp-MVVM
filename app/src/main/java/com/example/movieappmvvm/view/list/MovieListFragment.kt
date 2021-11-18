@@ -13,7 +13,7 @@ import com.example.movieappmvvm.view.main.ViewPagerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MovieListFragment : Fragment() {
+class MovieListFragment(query: String?) : Fragment() {
     private lateinit var binding: FragmentMovieListBinding
     private val viewModel: MovieListViewModel by viewModels()
 

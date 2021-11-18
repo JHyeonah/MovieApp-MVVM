@@ -26,7 +26,7 @@ class MainViewPagerFragment : Fragment() {
         val viewPager = binding.viewPager
         val searchbar = binding.searchBar
 
-        viewPager.adapter = ViewPagerAdapter(this)
+        viewPager.adapter = ViewPagerAdapter(this, null)
 
         TabLayoutMediator(tab, viewPager) { tabLayout, position ->
             tabLayout.setIcon(getTabIcon(position))
@@ -35,10 +35,20 @@ class MainViewPagerFragment : Fragment() {
 
         searchbar.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
+//                if (query != null && query.trim() != "") {
+//                    tab.visibility = View.GONE
+//                } else {
+//                    tab.visibility = View.VISIBLE
+//                }
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null && newText.trim() != "") {
+                    tab.visibility = View.GONE
+                } else {
+                    tab.visibility = View.VISIBLE
+                }
                 return true
             }
         })
