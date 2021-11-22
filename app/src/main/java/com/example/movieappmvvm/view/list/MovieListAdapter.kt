@@ -22,6 +22,10 @@ class MovieListAdapter : ListAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffCa
         (holder as MovieViewHolder).bind(movie)
     }
 
+    override fun submitList(list: MutableList<Movie>?) {
+        super.submitList((list?.let { ArrayList(it) }))
+    }
+
     class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.itemLayout.setOnClickListener {

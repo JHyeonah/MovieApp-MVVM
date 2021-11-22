@@ -24,7 +24,7 @@ class MovieListViewModel @Inject constructor(private val movieRepository: MovieR
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     Debug.log("get movie : ${response.body()}")
-                    movieList.postValue(response.body()?.data?.movies)
+                    movieList.setValue(response.body()?.data?.movies)
                 } else {
                     Debug.log("get movie error : ${response.message()}")
                 }
@@ -50,6 +50,7 @@ class MovieListViewModel @Inject constructor(private val movieRepository: MovieR
                     if (response.isSuccessful) {
                         Debug.log("search movie : ${response.body()}")
                         movieList.postValue(response.body()?.data?.movies)
+                        Debug.log("movieList : ${movieList.value?.get(0)?.title}")
                     } else {
                         Debug.log("search movie error : ${response.message()}")
                     }
