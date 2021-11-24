@@ -8,6 +8,7 @@ Movie Api를 이용해 MVVM 방식으로 구현한 Toy App
 ![캡처3](https://user-images.githubusercontent.com/38305511/143040141-fc3ca3f7-b735-4622-875b-8638f755fdef.PNG)
 - 영화 리스트 표시 (20개씩 무한스크롤)
 - 영화 검색 기능
+- Like한 영화 조회
 
 
 
