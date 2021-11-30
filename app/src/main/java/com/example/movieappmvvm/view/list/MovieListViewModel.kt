@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieListViewModel @Inject constructor(private val movieRepository: MovieRepository) : ViewModel() {
-    val movieList = MutableLiveData<List<Movie>>()
+    var movieList = MutableLiveData<ArrayList<Movie>>()
 
     init {
         getMovieList()
@@ -24,22 +24,12 @@ class MovieListViewModel @Inject constructor(private val movieRepository: MovieR
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     Debug.log("get movie : ${response.body()}")
-                    movieList.setValue(response.body()?.data?.movies)
+                    movieList.value = response.body()?.data?.movies
                 } else {
                     Debug.log("get movie error : ${response.message()}")
                 }
             }
         }
-//        job = CoroutineScope(Dispatchers.IO).launch {
-//            val response = movieRepository.getMovieList()
-//            withContext(Dispatchers.Main) {
-//                if (response.isSuccessful) {
-//                    movieList.postValue(response.body()?.data?.movies)
-//                } else {
-//                    Debug.log("get movie error : ${response.message()}")
-//                }
-//            }
-//        }
     }
 
     fun searchMovies(query: String?) {
@@ -49,8 +39,10 @@ class MovieListViewModel @Inject constructor(private val movieRepository: MovieR
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
                         Debug.log("search movie : ${response.body()}")
-                        movieList.postValue(response.body()?.data?.movies)
-                        Debug.log("movieList : ${movieList.value?.get(0)?.title}")
+                        if (response.body()?.data?.movies?.get(0) != null) {
+                            movieList.value = response.body()?.data?.movies
+                        }
+
                     } else {
                         Debug.log("search movie error : ${response.message()}")
                     }

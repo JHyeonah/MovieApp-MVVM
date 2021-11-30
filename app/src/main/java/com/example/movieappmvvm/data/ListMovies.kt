@@ -4,6 +4,6 @@ data class ListMovies(
     val data: Data
 ) {
     data class Data (
-        val movies: List<Movie>?
+        val movies: ArrayList<Movie>?
     )
 }

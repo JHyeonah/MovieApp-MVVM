@@ -18,9 +18,6 @@ import java.text.FieldPosition
 @AndroidEntryPoint
 class MainViewPagerFragment : Fragment() {
 
-    private val viewModel: MovieListViewModel by viewModels()
-    private val mainViewModel: MainViewModel by viewModels()
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,7 +26,6 @@ class MainViewPagerFragment : Fragment() {
         val binding = FragmentMainViewPagerBinding.inflate(inflater, container, false)
         val tab = binding.tabs
         val viewPager = binding.viewPager
-        val searchbar = binding.searchBar
 
         viewPager.adapter = ViewPagerAdapter(this)
 
@@ -38,26 +34,6 @@ class MainViewPagerFragment : Fragment() {
             tabLayout.text = getTabTitle(position)
         }.attach()
 
-        searchbar.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-//                if (query != null && query.trim() != "") {
-//                    tab.visibility = View.GONE
-//                } else {
-//                    tab.visibility = View.VISIBLE
-//                }
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                if (newText != null && newText.trim() != "") {
-                    tab.visibility = View.GONE
-                } else {
-                    tab.visibility = View.VISIBLE
-                }
-                viewModel.searchMovies(newText)
-                return true
-            }
-        })
         return binding.root
     }
 

@@ -3,6 +3,7 @@ package com.example.movieappmvvm.view.list
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.ViewDataBinding
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -11,6 +12,56 @@ import com.example.movieappmvvm.data.Movie
 import com.example.movieappmvvm.databinding.ItemMovieBinding
 import com.example.movieappmvvm.view.main.MainViewPagerFragmentDirections
 
+//class MovieListAdapter() :
+//    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+//
+//    private val movies: MutableList<Movie> = ArrayList()
+//
+//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+//        return MovieViewHolder(ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+//    }
+//
+//    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+//        val movie = getItem(position)
+//        (holder as MovieViewHolder).bind(movie)
+//    }
+//    private fun getItem(position: Int): Movie {
+//        return movies[position]
+//    }
+//
+//    override fun getItemCount(): Int {
+//        return movies.size
+//    }
+//
+//    fun addData(list: List<Movie>) {
+//        this.movies.clear()
+//        this.movies.addAll(list)
+//        notifyDataSetChanged()
+//    }
+//
+//
+//    inner class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
+//        init {
+//            binding.itemLayout.setOnClickListener {
+//                binding.movie?.let { movie ->
+//                    navigateToDetail(movie, it)
+//                }
+//            }
+//        }
+//
+//        fun bind(item: Movie) {
+//            binding.apply {
+//                movie = item
+//                executePendingBindings()
+//            }
+//        }
+//
+//        private fun navigateToDetail(movie: Movie, view: View) {
+//            val direction = MainViewPagerFragmentDirections.actionMainToMovieDetail(movie.id)
+//            view.findNavController().navigate(direction)
+//        }
+//    }
+//}
 class MovieListAdapter : ListAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -23,6 +74,7 @@ class MovieListAdapter : ListAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffCa
     }
 
     override fun submitList(list: MutableList<Movie>?) {
+        notifyDataSetChanged()
         super.submitList((list?.let { ArrayList(it) }))
     }
 

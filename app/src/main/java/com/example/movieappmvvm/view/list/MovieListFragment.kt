@@ -33,19 +33,26 @@ class MovieListFragment : Fragment() {
         binding.movieRecycler.adapter = adapter
         binding.movieRecycler.layoutManager = LinearLayoutManager(context)
 
+        binding.searchBar.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                viewModel.searchMovies(newText)
+                return true
+            }
+        })
+
         subscribeUI(adapter)
         return binding.root
     }
 
     private fun subscribeUI(adapter: MovieListAdapter) {
         viewModel.movieList.observe(viewLifecycleOwner, Observer {
+            Debug.log("movieList observed")
             adapter.submitList(it.toMutableList())
-            adapter.notifyDataSetChanged()
         })
-//        viewModel.movieList.observe (viewLifecycleOwner) {
-//            adapter.submitList(it)
-//            adapter.notifyDataSetChanged()
-//        }
     }
 
 }
