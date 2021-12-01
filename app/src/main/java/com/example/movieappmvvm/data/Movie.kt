@@ -1,9 +1,12 @@
 package com.example.movieappmvvm.data
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "movies")
 data class Movie (
-    val id: Int,
+    @PrimaryKey val id: Int,
     val title: String?,
     val summary: String?,
     val year: Int?,
