@@ -37,6 +37,7 @@
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
                 app:contentScrim="@color/deepGray"
                 app:title="@{movie.title}"
+                app:titleTextColor="@color/white"
                 app:toolbarId="@id/toolbar">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -207,5 +208,16 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:layout_anchor="@id/appBar"
+            app:layout_anchorGravity="bottom|end"
+            app:srcCompat="@drawable/icon_heart_normal"
+            style="@style/Widget.Design.FloatingActionButton"
+            android:elevation="5dp"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
