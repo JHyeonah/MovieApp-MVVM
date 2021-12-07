@@ -41,6 +41,12 @@ class MovieDetailViewModel @Inject constructor(
         }
     }
 
+    fun insertMovie(movie: Movie) {
+        viewModelScope.launch {
+
+        }
+    }
+
     companion object {
         private const val MOVIE_ID = "id"
     }

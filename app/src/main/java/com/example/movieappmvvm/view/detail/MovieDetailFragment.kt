@@ -51,6 +51,17 @@ class MovieDetailFragment : Fragment() {
             toolbar.setNavigationOnClickListener { view ->
                 view.findNavController().navigateUp()
             }
+
+            fab.tag = "unlike"
+            fab.setOnClickListener {
+                if (fab.tag == "unlike") {
+                    fab.tag = "like"
+                    fab.setImageResource(R.drawable.icon_heart_selected)
+                } else if (fab.tag == "like") {
+                    fab.tag = "unlike"
+                    fab.setImageResource(R.drawable.icon_heart_normal)
+                }
+            }
         }
 
         val adapter = CastAdapter()
