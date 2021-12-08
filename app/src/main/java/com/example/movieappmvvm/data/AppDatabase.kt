@@ -8,6 +8,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(entities = [Movie::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
+    abstract fun movieDao(): MovieDao
 
     companion object {
         // volatile : 변수를 cache가 아닌 메인 메모리에 저장. singleton instance

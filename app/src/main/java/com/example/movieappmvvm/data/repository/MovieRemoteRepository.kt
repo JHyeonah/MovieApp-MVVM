@@ -1,10 +1,10 @@
-package com.example.movieappmvvm.data
+package com.example.movieappmvvm.data.repository
 
 import com.example.movieappmvvm.service.MovieService
 import javax.inject.Inject
+import javax.inject.Singleton
 
-
-class MovieRepository @Inject constructor(private val service: MovieService, private val movieDao: MovieDao) {
+class MovieRemoteRepository @Inject constructor(private val service: MovieService) {
 
     suspend fun getMovieList() = service.getMovieList()
 
@@ -12,7 +12,4 @@ class MovieRepository @Inject constructor(private val service: MovieService, pri
 
     suspend fun searchMovieList(query: String) = service.searchMovieList(query)
 
-    suspend fun insertMovie(movie: Movie) {
-        movieDao.insertMovie(movie)
-    }
 }

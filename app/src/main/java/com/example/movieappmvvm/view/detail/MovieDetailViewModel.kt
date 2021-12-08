@@ -5,7 +5,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.movieappmvvm.data.Movie
-import com.example.movieappmvvm.data.MovieRepository
+import com.example.movieappmvvm.data.repository.MovieDBRepository
+import com.example.movieappmvvm.data.repository.MovieRemoteRepository
 import com.example.movieappmvvm.util.Debug
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -16,7 +17,8 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    private val movieRepository: MovieRepository
+    private val movieRemoteRepository: MovieRemoteRepository,
+    private val movieDBRepository: MovieDBRepository
 ): ViewModel() {
 
     private val movieId = savedStateHandle.get<Int>(MOVIE_ID)
@@ -29,7 +31,7 @@ class MovieDetailViewModel @Inject constructor(
 
     private fun getMovieDetail() {
         viewModelScope.launch {
-            val response = movieRepository.getMovieDetail(movieId ?: 0)
+            val response = movieRemoteRepository.getMovieDetail(movieId ?: 0)
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     Debug.log("get movie detail : ${response.body()}")
@@ -43,7 +45,13 @@ class MovieDetailViewModel @Inject constructor(
 
     fun insertMovie(movie: Movie) {
         viewModelScope.launch {
+            movieDBRepository.insertMovie(movie)
+        }
+    }
 
+    fun deleteMovie(movie: Movie) {
+        viewModelScope.launch {
+            movieDBRepository.deleteMovie(movie)
         }
     }
 

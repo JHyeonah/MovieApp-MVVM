@@ -1,9 +1,6 @@
 package com.example.movieappmvvm.data
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -13,4 +10,7 @@ interface MovieDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMovie(movie: Movie)
+
+    @Delete
+    suspend fun deleteMovie(movie: Movie)
 }

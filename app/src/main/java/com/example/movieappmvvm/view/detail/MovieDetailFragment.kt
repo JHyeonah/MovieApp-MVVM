@@ -57,9 +57,11 @@ class MovieDetailFragment : Fragment() {
                 if (fab.tag == "unlike") {
                     fab.tag = "like"
                     fab.setImageResource(R.drawable.icon_heart_selected)
+//                    viewModel.insertMovie(binding.movie)
                 } else if (fab.tag == "like") {
                     fab.tag = "unlike"
                     fab.setImageResource(R.drawable.icon_heart_normal)
+//                    viewModel.deleteMovie(binding.movie)
                 }
             }
         }
