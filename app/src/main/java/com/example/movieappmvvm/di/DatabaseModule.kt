@@ -20,7 +20,7 @@ class DatabaseModule {
     }
 
     @Provides
-    fun provideMovidDao(appDatabase: AppDatabase): MovieDao {
+    fun provideMovieDao(appDatabase: AppDatabase): MovieDao {
         return appDatabase.movieDao()
     }
 }
