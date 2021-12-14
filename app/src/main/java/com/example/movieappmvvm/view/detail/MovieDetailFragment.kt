@@ -52,16 +52,17 @@ class MovieDetailFragment : Fragment() {
                 view.findNavController().navigateUp()
             }
 
+            detailViewModel.getMovies()
             fab.tag = "unlike"
             fab.setOnClickListener {
                 if (fab.tag == "unlike") {
                     fab.tag = "like"
                     fab.setImageResource(R.drawable.icon_heart_selected)
-//                    viewModel.insertMovie(binding.movie)
+                    detailViewModel.insertMovie(binding.movie)
                 } else if (fab.tag == "like") {
                     fab.tag = "unlike"
                     fab.setImageResource(R.drawable.icon_heart_normal)
-//                    viewModel.deleteMovie(binding.movie)
+                    detailViewModel.deleteMovie(binding.movie)
                 }
             }
         }

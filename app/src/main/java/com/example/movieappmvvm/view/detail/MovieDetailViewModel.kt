@@ -43,15 +43,26 @@ class MovieDetailViewModel @Inject constructor(
         }
     }
 
-    fun insertMovie(movie: Movie) {
-        viewModelScope.launch {
-            movieDBRepository.insertMovie(movie)
+    fun insertMovie(movie: Movie?) {
+        movie?.let {
+            viewModelScope.launch {
+                movieDBRepository.insertMovie(movie)
+            }
         }
     }
 
-    fun deleteMovie(movie: Movie) {
+    fun deleteMovie(movie: Movie?) {
+        movie?.let {
+            viewModelScope.launch {
+                movieDBRepository.deleteMovie(movie)
+            }
+        }
+    }
+
+    fun getMovies() {
         viewModelScope.launch {
-            movieDBRepository.deleteMovie(movie)
+            val list = movieDBRepository.getMovies()
+            Debug.log("list : ${list.toString()}")
         }
     }
 
