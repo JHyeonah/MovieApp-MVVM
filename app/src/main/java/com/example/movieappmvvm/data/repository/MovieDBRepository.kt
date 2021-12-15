@@ -9,7 +9,7 @@ import javax.inject.Singleton
 @Singleton
 class MovieDBRepository @Inject constructor(private val movieDao: MovieDao) {
 
-    suspend fun getMovies(): Flow<List<Movie>> {
+    fun getMovies(): Flow<List<Movie>> {
         return movieDao.getMovies()
     }
 
