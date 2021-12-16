@@ -9,7 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.movieappmvvm.databinding.FragmentLikeBinding
 import com.example.movieappmvvm.util.Debug
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LikeFragment : Fragment() {
     private lateinit var binding: FragmentLikeBinding
     private val viewModel: LikeViewModel by viewModels()

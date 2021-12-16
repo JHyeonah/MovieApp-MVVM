@@ -51,7 +51,4 @@ class MovieListViewModel @Inject constructor(private val movieRemoteRepository: 
         }
     }
 
-    override fun onCleared() {
-        super.onCleared()
-    }
 }
