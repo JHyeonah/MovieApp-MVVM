@@ -8,6 +8,9 @@ interface MovieDao {
     @Query("SELECT * FROM movies")
     fun getMovies(): Flow<List<Movie>>
 
+    @Query("SELECT EXISTS(SELECT * FROM movies WHERE id = :id)")
+    fun searchMovieById(id: Int): Flow<Boolean>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMovie(movie: Movie)
 

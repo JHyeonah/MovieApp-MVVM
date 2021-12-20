@@ -1,9 +1,6 @@
 package com.example.movieappmvvm.view.detail
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.movieappmvvm.data.Movie
 import com.example.movieappmvvm.data.repository.MovieDBRepository
 import com.example.movieappmvvm.data.repository.MovieRemoteRepository
@@ -22,6 +19,7 @@ class MovieDetailViewModel @Inject constructor(
 ): ViewModel() {
 
     private val movieId = savedStateHandle.get<Int>(MOVIE_ID)
+    var isMovieExists: LiveData<Boolean> = movieDBRepository.searchMovieById(movieId ?: 0).asLiveData()
     val movie = MutableLiveData<Movie>()
 
     init {

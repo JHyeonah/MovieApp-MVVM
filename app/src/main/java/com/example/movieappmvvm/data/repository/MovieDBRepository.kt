@@ -13,6 +13,10 @@ class MovieDBRepository @Inject constructor(private val movieDao: MovieDao) {
         return movieDao.getMovies()
     }
 
+    fun searchMovieById(id: Int): Flow<Boolean> {
+        return movieDao.searchMovieById(id)
+    }
+
     suspend fun insertMovie(movie: Movie) {
         movieDao.insertMovie(movie)
     }

@@ -51,20 +51,6 @@ class MovieDetailFragment : Fragment() {
             toolbar.setNavigationOnClickListener { view ->
                 view.findNavController().navigateUp()
             }
-
-            detailViewModel.getMovies()
-            fab.tag = "unlike"
-            fab.setOnClickListener {
-                if (fab.tag == "unlike") {
-                    fab.tag = "like"
-                    fab.setImageResource(R.drawable.icon_heart_selected)
-                    detailViewModel.insertMovie(binding.movie)
-                } else if (fab.tag == "like") {
-                    fab.tag = "unlike"
-                    fab.setImageResource(R.drawable.icon_heart_normal)
-                    detailViewModel.deleteMovie(binding.movie)
-                }
-            }
         }
 
         val adapter = CastAdapter()
@@ -88,6 +74,27 @@ class MovieDetailFragment : Fragment() {
             val imgList = makeList(it.screenshotImage1, it.screenshotImage2, it.screenshotImage3)
             binding.imageViewPager.adapter = ImageViewPagerAdapter(requireContext(), imgList)
             binding.imageIndicator.setViewPager(binding.imageViewPager)
+        }
+
+        detailViewModel.isMovieExists.observe(viewLifecycleOwner) {
+            val isExists = it
+            with(binding) {
+                if (isExists) {
+                    fab.setImageResource(R.drawable.icon_heart_selected)
+                } else {
+                    fab.setImageResource(R.drawable.icon_heart_normal)
+                }
+
+                fab.setOnClickListener {
+                    if (!isExists) {
+                        fab.setImageResource(R.drawable.icon_heart_selected)
+                        detailViewModel.insertMovie(binding.movie)
+                    } else {
+                        fab.setImageResource(R.drawable.icon_heart_normal)
+                        detailViewModel.deleteMovie(binding.movie)
+                    }
+                }
+            }
         }
     }
 
