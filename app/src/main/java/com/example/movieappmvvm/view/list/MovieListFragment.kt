@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.movieappmvvm.data.Movie
 import com.example.movieappmvvm.databinding.FragmentMovieListBinding
 import com.example.movieappmvvm.util.Debug
@@ -20,6 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MovieListFragment : Fragment() {
     private lateinit var binding: FragmentMovieListBinding
     private val viewModel: MovieListViewModel by viewModels()
+    private var page = 1
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,6 +34,17 @@ class MovieListFragment : Fragment() {
         val adapter = MovieListAdapter()
         binding.movieRecycler.adapter = adapter
         binding.movieRecycler.layoutManager = LinearLayoutManager(context)
+
+        binding.movieRecycler.addOnScrollListener(object: RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                if (!binding.movieRecycler.canScrollVertically(1)) {
+                    page++
+                    viewModel.getMovieList(page)
+                }
+            }
+        })
 
         binding.searchBar.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {

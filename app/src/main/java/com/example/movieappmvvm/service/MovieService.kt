@@ -15,7 +15,7 @@ import retrofit2.http.Query
 
 interface MovieService {
     @GET("list_movies.json")
-    suspend fun getMovieList(): Response<ListMovies>
+    suspend fun getMovieList(@Query("page") page: Int): Response<ListMovies>
 
     @GET("list_movies.json")
     suspend fun searchMovieList(@Query("query_term") query: String): Response<ListMovies>

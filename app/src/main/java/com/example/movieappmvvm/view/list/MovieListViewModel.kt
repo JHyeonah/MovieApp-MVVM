@@ -15,12 +15,12 @@ class MovieListViewModel @Inject constructor(private val movieRemoteRepository: 
     var movieList = MutableLiveData<ArrayList<Movie>>()
 
     init {
-        getMovieList()
+        getMovieList(1)
     }
 
-    private fun getMovieList() {
+    fun getMovieList(page: Int) {
         viewModelScope.launch {
-            val response = movieRemoteRepository.getMovieList()
+            val response = movieRemoteRepository.getMovieList(page)
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     Debug.log("get movie : ${response.body()}")
