@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.movieappmvvm.data.Movie
 import com.example.movieappmvvm.databinding.FragmentMovieListBinding
 import com.example.movieappmvvm.util.Debug
+import com.example.movieappmvvm.view.dialog.LoadingDialog
 import com.example.movieappmvvm.view.list.MovieListViewModel
 import com.example.movieappmvvm.view.main.ViewPagerAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,7 +22,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class MovieListFragment : Fragment() {
     private lateinit var binding: FragmentMovieListBinding
     private val viewModel: MovieListViewModel by viewModels()
-    private var page = 1
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,12 +36,16 @@ class MovieListFragment : Fragment() {
         binding.movieRecycler.layoutManager = LinearLayoutManager(context)
 
         binding.movieRecycler.addOnScrollListener(object: RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
 
                 if (!binding.movieRecycler.canScrollVertically(1)) {
-                    page++
-                    viewModel.getMovieList(page)
+                    if (viewModel.isLoadDone) {
+//                        LoadingDialog(context!!).show()
+                        viewModel.isLoadDone = false
+                        viewModel.page++
+                        viewModel.getMovieList(viewModel.page)
+                    }
                 }
             }
         })

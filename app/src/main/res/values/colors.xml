@@ -5,6 +5,7 @@
     <color name="colorAccent">#6200EE</color>
     <color name="lightGray">#1B1251</color>
     <color name="deepGray">#0A0432</color>
+    <color name="deepGrayOpacity30">#4D0A0432</color>
 
     <color name="yellowStar">#FFDC2F</color>
 

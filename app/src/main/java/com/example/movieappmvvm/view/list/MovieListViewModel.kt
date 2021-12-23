@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.movieappmvvm.data.Movie
 import com.example.movieappmvvm.data.repository.MovieRemoteRepository
 import com.example.movieappmvvm.util.Debug
+import com.example.movieappmvvm.view.dialog.LoadingDialog
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import javax.inject.Inject
@@ -13,6 +14,8 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieListViewModel @Inject constructor(private val movieRemoteRepository: MovieRemoteRepository) : ViewModel() {
     var movieList = MutableLiveData<ArrayList<Movie>>()
+    var page = 1
+    var isLoadDone = true
 
     init {
         getMovieList(1)
@@ -24,7 +27,20 @@ class MovieListViewModel @Inject constructor(private val movieRemoteRepository: 
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     Debug.log("get movie : ${response.body()}")
-                    movieList.value = response.body()?.data?.movies
+                    val list = response.body()?.data?.movies
+                    val prevList = movieList.value
+
+                    if (!prevList.isNullOrEmpty()) {
+                        list?.let {
+                            for (i in it.iterator()) {
+                                prevList.add(i)
+                            }
+                        }
+                        movieList.value = prevList
+                    } else {
+                        movieList.value = list
+                    }
+                    isLoadDone = true
                 } else {
                     Debug.log("get movie error : ${response.message()}")
                 }
