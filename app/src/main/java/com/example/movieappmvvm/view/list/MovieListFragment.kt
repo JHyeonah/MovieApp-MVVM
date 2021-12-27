@@ -7,15 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.movieappmvvm.data.Movie
 import com.example.movieappmvvm.databinding.FragmentMovieListBinding
 import com.example.movieappmvvm.util.Debug
-import com.example.movieappmvvm.view.dialog.LoadingDialog
-import com.example.movieappmvvm.view.list.MovieListViewModel
-import com.example.movieappmvvm.view.main.ViewPagerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

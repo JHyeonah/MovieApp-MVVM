@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.movieappmvvm.data.Movie
 import com.example.movieappmvvm.data.repository.MovieRemoteRepository
 import com.example.movieappmvvm.util.Debug
-import com.example.movieappmvvm.view.dialog.LoadingDialog
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import javax.inject.Inject

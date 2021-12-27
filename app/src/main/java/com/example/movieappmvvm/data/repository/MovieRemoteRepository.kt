@@ -1,5 +1,4 @@
 package com.example.movieappmvvm.data.repository
-
 import com.example.movieappmvvm.service.MovieService
 import javax.inject.Inject
 import javax.inject.Singleton
