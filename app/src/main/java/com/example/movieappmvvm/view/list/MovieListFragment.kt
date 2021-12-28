@@ -35,8 +35,7 @@ class MovieListFragment : Fragment() {
                 super.onScrollStateChanged(recyclerView, newState)
 
                 if (!binding.movieRecycler.canScrollVertically(1)) {
-                    if (viewModel.isLoadDone) {
-//                        LoadingDialog(context!!).show()
+                    if (viewModel.isLoadDone && !viewModel.isSearch) {
                         viewModel.isLoadDone = false
                         viewModel.page++
                         viewModel.getMovieList(viewModel.page)

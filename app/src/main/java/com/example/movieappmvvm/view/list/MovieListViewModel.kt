@@ -15,6 +15,7 @@ class MovieListViewModel @Inject constructor(private val movieRemoteRepository: 
     var movieList = MutableLiveData<ArrayList<Movie>>()
     var page = 1
     var isLoadDone = true
+    var isSearch = false
 
     init {
         getMovieList(1)
@@ -40,6 +41,7 @@ class MovieListViewModel @Inject constructor(private val movieRemoteRepository: 
                         movieList.value = list
                     }
                     isLoadDone = true
+                    isSearch = false
                 } else {
                     Debug.log("get movie error : ${response.message()}")
                 }
@@ -56,6 +58,7 @@ class MovieListViewModel @Inject constructor(private val movieRemoteRepository: 
                         Debug.log("search movie : ${response.body()}")
                         if (response.body()?.data?.movies?.get(0) != null) {
                             movieList.value = response.body()?.data?.movies
+                            isSearch = true
                         }
 
                     } else {

@@ -57,13 +57,6 @@ class MovieDetailViewModel @Inject constructor(
         }
     }
 
-    fun getMovies() {
-        viewModelScope.launch {
-            val list = movieDBRepository.getMovies()
-            Debug.log("list : ${list.toString()}")
-        }
-    }
-
     companion object {
         private const val MOVIE_ID = "id"
     }
