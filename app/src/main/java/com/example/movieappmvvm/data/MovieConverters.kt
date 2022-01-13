@@ -9,11 +9,11 @@ class MovieConverters {
     fun stringToList(value: String) = Gson().fromJson(value, Array<String>::class.java).toList()
 
     @TypeConverter
-    fun listToJson(value: List<String>) = Gson().toJson(value)
+    fun listToJson(value: List<String>): String = Gson().toJson(value)
 
     @TypeConverter
     fun stringToCastList(value: String) = Gson().fromJson(value, Array<Cast>::class.java).toList()
 
     @TypeConverter
-    fun castListToJson(value: List<Cast>) = Gson().toJson(value)
+    fun castListToJson(value: List<Cast>): String = Gson().toJson(value)
 }
