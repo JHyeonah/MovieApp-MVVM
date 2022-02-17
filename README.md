@@ -45,3 +45,7 @@
 - [Glide](https://github.com/bumptech/glide) : 이미지 처리
 - [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) : 의존성 주입
 - [Retrofit](https://square.github.io/retrofit/) : HTTP 통신 시 사용하는 라이브러리
+
+## MAD Scorecard
+![summary](https://user-images.githubusercontent.com/38305511/154393675-359ead20-f90f-4501-bed1-25a245ab7d6c.png)
+
