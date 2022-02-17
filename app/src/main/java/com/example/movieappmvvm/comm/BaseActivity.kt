@@ -14,10 +14,10 @@ abstract class BaseActivity<T: BaseViewModel>: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(layoutResourceId)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.navigationBarColor = ContextCompat.getColor(this, R.color.deepGray)
-        }
-        initView()
+//        setContentView(layoutResourceId)
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            window.navigationBarColor = ContextCompat.getColor(this, R.color.deepGray)
+//        }
+//        initView()
     }
 }

@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
+import com.example.movieappmvvm.R
 import com.example.movieappmvvm.databinding.FragmentMovieDetailBinding
 import com.example.movieappmvvm.util.Debug
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,6 +42,8 @@ class MovieDetailFragment : Fragment() {
                         // Use shadow animator to add elevation if toolbar is shown
                         appBar.isActivated = shouldShowToolbar
                         toolbarLayout.isTitleEnabled = shouldShowToolbar
+                        toolbarLayout.setExpandedTitleColor(ContextCompat.getColor(activity?.applicationContext!!, R.color.white))
+                        toolbarLayout.setCollapsedTitleTextColor(ContextCompat.getColor(activity?.applicationContext!!, R.color.white))
                     }
                 }
             )
@@ -70,6 +74,27 @@ class MovieDetailFragment : Fragment() {
             val imgList = makeList(it.screenshotImage1, it.screenshotImage2, it.screenshotImage3)
             binding.imageViewPager.adapter = ImageViewPagerAdapter(requireContext(), imgList)
             binding.imageIndicator.setViewPager(binding.imageViewPager)
+        }
+
+        detailViewModel.isMovieExists.observe(viewLifecycleOwner) {
+            val isExists = it
+            with(binding) {
+                if (isExists) {
+                    fab.setImageResource(R.drawable.icon_heart_selected)
+                } else {
+                    fab.setImageResource(R.drawable.icon_heart_normal)
+                }
+
+                fab.setOnClickListener {
+                    if (!isExists) {
+                        fab.setImageResource(R.drawable.icon_heart_selected)
+                        detailViewModel.insertMovie(binding.movie)
+                    } else {
+                        fab.setImageResource(R.drawable.icon_heart_normal)
+                        detailViewModel.deleteMovie(binding.movie)
+                    }
+                }
+            }
         }
     }
 

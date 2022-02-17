@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.movieappmvvm.R
 import com.example.movieappmvvm.databinding.FragmentMainViewPagerBinding
+import com.example.movieappmvvm.view.list.MovieListViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import java.lang.IndexOutOfBoundsException
@@ -33,6 +36,8 @@ class MainViewPagerFragment : Fragment() {
 
         return binding.root
     }
+
+
 
     private fun getTabIcon(position: Int): Int {
         return when (position) {

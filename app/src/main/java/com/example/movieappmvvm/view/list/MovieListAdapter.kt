@@ -3,6 +3,7 @@ package com.example.movieappmvvm.view.list
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.ViewDataBinding
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -20,6 +21,11 @@ class MovieListAdapter : ListAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffCa
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val movie = getItem(position)
         (holder as MovieViewHolder).bind(movie)
+    }
+
+    override fun submitList(list: MutableList<Movie>?) {
+        notifyDataSetChanged()
+        super.submitList((list?.let { ArrayList(it) }))
     }
 
     class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {

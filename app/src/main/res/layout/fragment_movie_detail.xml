@@ -35,6 +35,9 @@
                 tools:text="title"
                 app:titleEnabled="false"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:contentScrim="@color/deepGray"
+                app:title="@{movie.title}"
+                app:titleTextColor="@color/white"
                 app:toolbarId="@id/toolbar">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,7 +47,7 @@
                     android:id="@+id/image_view_pager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorPrimary"/>
+                        app:layout_constraintTop_toTopOf="parent"/>
                     <me.relex.circleindicator.CircleIndicator3
                         android:id="@+id/image_indicator"
                         android:layout_width="wrap_content"
@@ -57,9 +60,12 @@
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
+                    android:layout_height="48dp"
                     app:contentInsetStartWithNavigation="0dp"
-                    app:navigationIcon="@drawable/ic_arrow_back"/>
+                    app:navigationIcon="@drawable/ic_arrow_back"
+                    app:layout_collapseMode="pin"
+                    app:titleTextColor="@color/white"
+                    android:background="@android:color/transparent"/>
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
@@ -203,5 +209,16 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:layout_anchor="@id/appBar"
+            app:layout_anchorGravity="bottom|end"
+            app:srcCompat="@drawable/icon_heart_normal"
+            style="@style/Widget.Design.FloatingActionButton"
+            android:elevation="5dp"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

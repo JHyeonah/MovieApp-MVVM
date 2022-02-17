@@ -14,7 +14,7 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
 }
 
 @BindingAdapter("genreText")
-fun bindGenreText(view: TextView, list: ArrayList<String>?) {
+fun bindGenreText(view: TextView, list: List<String>?) {
     if (!list.isNullOrEmpty()) {
         var genre = ""
         for (i in list.iterator()) {
