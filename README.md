@@ -6,13 +6,14 @@
 ## 메인화면
 
 ![영화리스트](https://user-images.githubusercontent.com/38305511/148065572-537c808f-72a5-4d12-8d01-191c43ee4643.JPG)
-- 영화 리스트 표시
+- 영화 리스트 표시 
+- Retrofit + Coroutine으로 API 통신
 - 20개씩 무한 스크롤 가능  
 
 ## 영화 검색
 
 ![검색](https://user-images.githubusercontent.com/38305511/148066741-e2d5ef76-499b-4aa5-bb61-711b2694a866.JPG)
-- 영화 검색 기능
+- 영화 검색 기능 (API)
 - 상단의 SearchBar로 영화 검색 
 
 ## 영화 상세보기
@@ -21,13 +22,14 @@
 ![디테일 스크롤](https://user-images.githubusercontent.com/38305511/148067831-a915e652-8052-4052-9406-416f50e05b60.JPG)
 - 영화 상세보기 화면
 - 영화 제목, 스크린샷, 장르, 런타임, 배우 등 조회 
-- 상단 Floating Action Button으로 영화 좋아요/좋아요 삭제 가능
-- 하단으로 스크롤 시 스크린샷이 사라지는 애니메이션 적용 (CoordinatorLayout)
+- Floating Action Button으로 영화 좋아요/좋아요 삭제 가능
+- Coordinator Layout을 적용하여 하단으로 스크롤 시 스크린샷이 사라지는 애니메이션 적용 
 
 ## 좋아요 리스트
 
 ![좋아요화면](https://user-images.githubusercontent.com/38305511/148070375-5a182626-20d1-4582-b6dd-4b02ffc3ae5b.JPG)
 - 좋아요한 영화 모아보기 리스트
+- Room DB를 사용하여 좋아요 리스트 관리
 - 상세보기로 접근 가능
 
 <br><br>사용한 API : https://yts.mx/api
@@ -43,3 +45,7 @@
 - [Glide](https://github.com/bumptech/glide) : 이미지 처리
 - [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) : 의존성 주입
 - [Retrofit](https://square.github.io/retrofit/) : HTTP 통신 시 사용하는 라이브러리
+
+## MAD Scorecard
+![summary](https://user-images.githubusercontent.com/38305511/154393675-359ead20-f90f-4501-bed1-25a245ab7d6c.png)
+
